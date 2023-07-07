@@ -5,7 +5,7 @@ import UserComponentList from "./User_component_list";
 const Users = () => {
     return (
         <div>
-            {users.map((user) =>( <UserComponentList user = {user}/>))}
+            {users.map((user) =>( <UserComponentList  user = {user}/>))}
 
         </div>
     );

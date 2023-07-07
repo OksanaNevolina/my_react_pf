@@ -1,0 +1,14 @@
+.divx{
+    border: 2px solid #150b6c;
+    height: auto;
+    width: 400px;
+    text-align: start;
+    padding-left: 5px;
+}
+button{
+    margin: 20px;
+    height: 30px;
+    width: 150px;
+    text-align: center;
+
+}
