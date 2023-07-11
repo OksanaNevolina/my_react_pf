@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Child1 from "./components/Child1/Child1";
+import Child2 from "./components/Child2/Child2";
 
-function App() {
+const App = () => {
+    const str = 'Хуки — це новинка в React 16.8.' +
+    ' Вони дозволяють вам використовувати' +
+    ' стан та інші можливості React без написання класу.'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <Child1 str = {str} />
+        <Child2 str = {str} />
+      </div>
   );
-}
+};
 
 export default App;
