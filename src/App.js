@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, {useEffect, useState} from 'react';
+import Users from "./Components/Users/Users";
+import UsersPosts from "./Components/UsersPosts/UsersPosts";
+const App = () => {
+    const [users, setUsers]= useState([])
+    useEffect(()=>{
+        fetch(' https://jsonplaceholder.typicode.com/users')
+            .then(rev =>rev.json())
+            .then(users=>{
+                setUsers(users)
+            })
+    },[])
+    const [userId, setuserId] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className= 'wrrrrap'>
+          <div>{users.map((user)=>
+              <Users
+                  key = {user.id}
+                  user = {user}
+                  setuserId = {setuserId}
+
+              />)}</div>
+
+          <div>{userId && <UsersPosts  userId = {userId}/>}</div>
+
+      </div>
   );
-}
+};
 
 export default App;
