@@ -1,0 +1,10 @@
+.car{
+    width: 150px;
+    height: auto;
+    border: 2px solid dodgerblue;
+    background-color: lavender;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 10px;
+}
