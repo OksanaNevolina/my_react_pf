@@ -4,11 +4,12 @@ import FormCar from "./FormCar/FormCar";
 
 const CarsConte = () => {
     const [onSave, setOnSave]= useState(null)
+    const [carForUpdate, setСarForUpdate]= useState(null)
     return (
         <div>
-            <FormCar setOnSave = {setOnSave}/>
+            <FormCar setOnSave = {setOnSave} carForUpdate={carForUpdate} setСarForUpdate = {setСarForUpdate} />
             <br/>
-            <Cars onSave ={onSave}/>
+            <Cars onSave={onSave}  setOnSave = {setOnSave} setСarForUpdate = {setСarForUpdate} />
 
         </div>
     );
