@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com'
 })
 const Endpoints = {
-    LOGIN :'/users'
+    LOGIN :'/comments'
 }
 
 export const apiService = {

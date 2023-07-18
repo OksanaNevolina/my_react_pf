@@ -1,10 +1,10 @@
 import React from 'react';
-import Users from "./compontnts/users/users";
+import CommitUser from "./compontnts/CommitUser/CommitUser";
 
 const App = () => {
   return (
       <div>
-        <Users/>
+        <CommitUser/>
       </div>
   );
 };
