@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import {carService} from "../../../services/carService";
 import Car from "../Car/Car";
-import {apiServices} from "../../../services/apiServices";
+import {Context} from "../ConteComponent";
 
 
-const Cars = ({onSave,setOnSave,setСarForUpdate}) => {
-    const [cars , setCars] = useState([])
-    useEffect(() => {
-        apiServices.postLoginAxios(data)
-    },[onSave])
-    return (
+const Cars = () => {
+    const [cars, setCars] = useState([]);
+    const {trigger} = useContext(Context);
+    useEffect(()=>{
+        carService.getAll().then(({data})=> setCars(data))
+    },[trigger])
+    return(
         <div>
-            {cars.map(car=><Car key = {car.id} car = {car}  setOnSave = {setOnSave} setСarForUpdate={setСarForUpdate} />)}
-
+            {cars.map(car=><Car key ={car.id} car={car}/>)}
         </div>
     );
 };

@@ -1,20 +1,31 @@
-
-import React, {useState} from 'react';
-import CarsForm from "./CarsForm/CarsForm";
+import React, {createContext, useState} from 'react';
 import Cars from "./Cars/Cars";
+import CarsForm from "./CarsForm/CarsForm";
 
+const Context = createContext(null);
 const ConteComponent = () => {
-    const [onSave, setOnSave]= useState(null)
-    const [carForUpdate, setСarForUpdate]= useState(null)
+    const {triggor, setTriggor} = useState(null);
+    const {carForUpdate, setCarForUpdate} = useState(null);
 
     return (
-        <div>
-            <CarsForm setOnSave = {setOnSave} carForUpdate={carForUpdate} setСarForUpdate = {setСarForUpdate} />
-            <br/>
-            <Cars onSave={onSave}  setOnSave = {setOnSave} setСarForUpdate = {setСarForUpdate} />
 
-        </div>
+            <Context.Provider value={{
+                triggor,
+                setTriggor: () => setTriggor(prev => !prev),
+                carForUpdate,
+                setCarForUpdate
+            }}>
+              <div>
+                  <CarsForm/>
+                  <br/>
+                  <Cars/>
+              </div>
+        </Context.Provider>
     );
+
 };
 
-export default ConteComponent;
+export {
+    ConteComponent,
+    Context
+};

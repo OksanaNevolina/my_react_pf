@@ -1,21 +1,16 @@
 import React from 'react';
 import './Car.css'
-import {apiServices} from "../../../services/apiServices";
 
-const Car = ({car,setOnSave,setСarForUpdate}) => {
-    const {id,brand,price,year} = car;
-    const deleteCar = () => {
-        apiServices.postLoginAxiosCar(data)
-    }
+const Car = ({car}) => {
+    const {id,brand,price,year}=car;
     return (
         <div className='car'>
-            <p>id- {id}</p>
-            <p>brand- {brand}</p>
-            <p>price- {price}</p>
-            <p>year- {year}</p>
-            <button onClick={()=>setСarForUpdate(car)}>update</button>
-            <button onClick={deleteCar}>delete</button>
-
+           <div>id-{id}</div>
+           <div>brand-{brand}</div>
+           <div>price-{price}</div>
+           <div>year-{year}</div>
+            <button>delete</button>
+            <button>update</button>
 
         </div>
     );

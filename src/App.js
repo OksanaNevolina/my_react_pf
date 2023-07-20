@@ -1,5 +1,5 @@
 import React from 'react';
-import ConteComponent from "./components/conteComponent/ConteComponent";
+import {ConteComponent} from "./components/conteComponent/ConteComponent";
 
 const App = () => {
     return (

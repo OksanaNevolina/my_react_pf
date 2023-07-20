@@ -1,59 +1,37 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import {useForm} from "react-hook-form";
-import {joiResolver} from "@hookform/resolvers/joi";
-import {validCars} from "../../valid/validCars";
+import {Context} from "../ConteComponent";
+import {carService} from "../../../services/carService";
 import './CarsForm.css'
-import {apiServices} from "../../../services/apiServices";
-const FormCar = ({setOnSave,carForUpdate,setСarForUpdate}) => {
-    const {register, handleSubmit, reset, formState:{errors, isValid},setValue}= useForm({
-        mode: "all",
-        resolver:joiResolver(validCars)
-    });
-    useEffect(()=>{
-        if(carForUpdate){
-            setValue('brand',carForUpdate.brand,{shouldValidate:true})
-            setValue('price',carForUpdate.price,{shouldValidate:true})
-            setValue('year',carForUpdate.year,{shouldValidate:true})
+
+
+const CarsForm = () => {
+    const {reset, register,handleSubmit} = useForm();
+    const [errors,setErrors] = useState(null);
+    const {setTrigger} = useContext(Context);
+    const save = async (car) => {
+        try {
+            await carService.create(car);
+            setErrors(null)
+            reset()
+            setTrigger()
+
+        } catch (e) {
+           setErrors(e.response.data)
         }
-    },[carForUpdate])
-    const save = (data) => {
-        fetch('http://owu.linkpc.net/carsAPI/v1/cars',{
-            headers:{'content-type':'application/json'},
-            body:JSON.stringify(data),
-            method:'POST'
-        }).then(value => {
-            if (!value.ok){
-                throw Error(value.status+'not ok')
-            }
-            return value.json()
-        })
-            .then(()=> {
-                setOnSave(prev => !prev)
-                reset()
-            })
-            .catch(e=>{
-                console.log(e)
-            })
-    }
-    const update = (car) => {
-        apiServices.postLoginAxioUpdete(data)
+
     }
     return (
         <div>
-            <form className='formCar' onSubmit={handleSubmit(!carForUpdate?save:update)}>
-                <label > <input type="text" placeholder={'brand'} {...register('brand')}/></label>
-                {errors.brand && <p>{errors.brand.message}</p>}
-                <label> <input type="text" placeholder={'price'} {...register('price')}/></label>
-                {errors.price && <p>{errors.price.message}</p>}
-                <label > <input type="text" placeholder={'year'} {...register('year')}/></label>
-                {errors.year && <p>{errors.year.message}</p>}
-
-                <button disabled={!isValid}>{!carForUpdate?'SAVE':'UPDATE'}</button>
-
+            <form className='formCar' onClick={handleSubmit(save)}>
+            <label ><input type="text" placeholder={'brand'} {...register('brand')} /></label>
+            <label ><input type="text" placeholder={'price'} {...register('price')} /></label>
+            <label ><input type="text" placeholder={'year'} {...register('year')} /></label>
+            <button>save</button>
             </form>
-
+            {errors&&JSON.stringify(errors)}
         </div>
     );
 };
 
-export default FormCar;
+export default CarsForm;
