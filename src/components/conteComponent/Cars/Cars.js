@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {carService} from "../../../services/carService";
 import Car from "../Car/Car";
 import {Context} from "../ConteComponent";
+import './Cars.css'
 
 
 const Cars = () => {
