@@ -1,0 +1,16 @@
+.hed{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: dodgerblue;
+    font-size: 25px;
+}
+.hed a {
+    color: azure;
+    text-decoration: none;
+}
+.hed a[class='active'] {
+    color: yellow;
+}
