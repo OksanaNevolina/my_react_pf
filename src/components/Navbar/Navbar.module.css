@@ -1,0 +1,16 @@
+.nav{
+    background-color: bisque;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav a{
+    text-decoration: none;
+    color: #09412e;
+    font-size: 20px;
+}
+.nav a[class='active'] {
+    color: #7f7644;
+}
