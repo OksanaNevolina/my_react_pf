@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import TestUseMemo from "./componrnts/TestUseMemo";
+import TestUseCallBack from "./componrnts/TestUseCallBack";
+import TestUseToggle from "./componrnts/TestUseToggle/TestUseToggle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [count1, setCount1] = useState(0);
+    return (
+        <div>
+            {/*<button onClick={()=>setCount1(prevState => ++prevState)}>increment1</button>*/}
+            {/*<TestUseMemo count1={count1}/>*/}
+            {/*<TestUseCallBack count1={count1}/>*/}
+            <TestUseToggle/>
+        </div>
+    );
+};
+
+
 
 export default App;

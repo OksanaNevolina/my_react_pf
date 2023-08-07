@@ -1,0 +1,18 @@
+.TestUseToggle{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.red{
+ background-color: red;
+
+}
+.blue{
+    background-color: blue;
+}
+button{
+    font-size: 30px;
+    width: 150px;
+}
