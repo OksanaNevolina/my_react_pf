@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Character = ({character}) => {
-    const {id, name, image} =character;
+const Character = ({charac}) => {
+    const {id, name, image} =charac;
     return (
         <div>
             <div>id: {id}</div>

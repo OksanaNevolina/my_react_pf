@@ -8,20 +8,19 @@ import {Episode} from "../Episode/Episode";
 
 const Episodes = () => {
     const dispatch = useDispatch();
-    const {episodes}= useSelector(state => state.episodes);
+    const {episodes}= useSelector(store => store.episodes);
     const [query, setQuery] = useSearchParams({page:'1'});
 
     useEffect(()=>{
         episodesService.getAll(query.get('page')).then(({data})=>{
             dispatch(episodesAction.set(data))
             setQuery(prev => ({...prev,page: prev.get('page')}))
-        },[query,dispatch])
-    })
+        })
+    },[query,dispatch])
     return (
         <div className={css.Episodes}>
             {episodes.map(episode=><Episode key={episode.id}
-                                            episode={episode}
-                />
+                                            episode={episode}/>
                 )}
 
         </div>

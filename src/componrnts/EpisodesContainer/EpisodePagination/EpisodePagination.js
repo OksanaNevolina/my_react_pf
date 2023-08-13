@@ -4,7 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import css from './EpisodePagination.module.css';
 
 const EpisodePagination = () => {
-    const {prevPage, nextPage} = useSelector(state => state.episodes);
+    const {prevPage, nextPage} = useSelector(store => store.episodes);
     const [, setQuery] = useSearchParams();
     const toPrevPage = () => {
         setQuery(prev => ({...prev, page: +prev.get('page') - 1}))

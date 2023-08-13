@@ -11,6 +11,7 @@ const Characters = () => {
    const {state:{ids}}= useLocation();
 
    useEffect(()=>{
+
        characterService.getByIds(ids).then(({data})=>{
            dispatch(charactersAction.set(data))
        })
@@ -19,10 +20,7 @@ const Characters = () => {
     return (
         <div>
             Characters
-            {characters.map(character=><Character
-                key={character.id}
-                character={character}
-            />)}
+            {characters.map(charac=> <Character key={charac.id} charac={charac}/>)}
         </div>
     );
 };
